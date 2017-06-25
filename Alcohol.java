@@ -9,17 +9,22 @@ public class Alcohol {
   public static void main(String[] args) {
     System.out.print("You must be 21 to drink. Please enter your age: ");
     Integer age = inputAge();
-    compareAge(age);
+    Boolean oldEnough = compareAge(age);
+    if (oldEnough == true) {
+      System.out.println("Since you are " + age + " years old, you are old enough to drink - hooray!");
+    } else {
+      System.out.println("Sorry, you are only " + age + " years old, and not enough to drink.");
+    }
   }
   public static Integer inputAge() {
     Console myConsole = System.console();
     return Integer.parseInt(myConsole.readLine());
   }
-  public static void compareAge(int age) {
+  public static Boolean compareAge(int age) {
     if (age >= 21) {
-      System.out.println("You are " + age + " so you can drink!");
+      return true;
     } else {
-      System.out.println("You are only " + age + " and therefore cannot drink. Sorry!");
+      return false;
      }
   }
 
